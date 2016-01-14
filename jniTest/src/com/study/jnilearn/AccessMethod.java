@@ -1,5 +1,6 @@
 package com.study.jnilearn;
 import java.lang.System.*;
+import com.study.jnilearn.*;
 
 public class AccessMethod{
 	
@@ -11,7 +12,7 @@ public class AccessMethod{
 		
 		callJavaInstanceMethod("instance  " , 5);
 		callJavaStaticMethod("static ", 6);
-		
+		new ClassMethod().callInstanceMethod("hahah" , 7);
 	}
 	
 	static{
