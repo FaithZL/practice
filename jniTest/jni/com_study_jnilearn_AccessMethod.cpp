@@ -12,7 +12,8 @@ JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessMethod_callJavaStaticMethod
   (JNIEnv * env , jclass cls ,jstring str , jint val)
 {
 	jclass clazz = NULL;
-	jmethodID mid_static_method;
+	jmethodID mid_static_method = NULL;
+	jstring str_arg = NULL;
 
 	cout<<"start C++ "<<endl;
 
@@ -30,11 +31,13 @@ JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessMethod_callJavaStaticMethod
 		cout<<"can't find static method   callStaticMethod"<<endl;
 		return;
 	}
+
 	cout<<"call java method "<<endl;
+	// str_arg = env->NewStringUTF("fuck");
 	env->CallStaticVoidMethod(clazz , mid_static_method , str , val);
 	//delete the local ref
 	env->DeleteLocalRef(clazz);
-	cout<<"end C++ function";
+	cout<<"end C++ function"<<endl;
 }
 
 /*
@@ -50,7 +53,7 @@ JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessMethod_callJavaInstanceMeth
 	jmethodID mid_construct = NULL;
 	jmethodID mid_instance = NULL;
 
-	cout<<"start C++"<<endl;
+	cout<<"start C++  "<<endl;
 
 	clazz = env->FindClass("com/study/jnilearn/ClassMethod");
 	if (clazz == NULL)
@@ -82,7 +85,7 @@ JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessMethod_callJavaInstanceMeth
 		return;
 	}
 	cout<<"call java method "<<endl;
-	env->CallVoidMethod(clazz , mid_instance , str ,val);
+	env->CallVoidMethod(jobj , mid_instance , str ,val);
 
 	env->DeleteLocalRef(clazz);
 	env->DeleteLocalRef(jobj);

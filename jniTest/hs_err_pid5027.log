@@ -1,7 +1,7 @@
 #
 # A fatal error has been detected by the Java Runtime Environment:
 #
-#  Internal Error (jni.cpp:1198), pid=4487, tid=5891
+#  Internal Error (jni.cpp:1198), pid=5027, tid=5379
 #  Error: ShouldNotReachHere()
 #
 # JRE version: Java(TM) SE Runtime Environment (7.0_79-b15) (build 1.7.0_79-b15)
@@ -14,24 +14,24 @@
 
 ---------------  T H R E A D  ---------------
 
-Current thread (0x00007fd432806800):  JavaThread "main" [_thread_in_vm, id=5891, stack(0x000070000011a000,0x000070000021a000)]
+Current thread (0x00007f8b42806800):  JavaThread "main" [_thread_in_vm, id=5379, stack(0x0000700000097000,0x0000700000197000)]
 
-Stack: [0x000070000011a000,0x000070000021a000],  sp=0x0000700000219200,  free space=1020k
+Stack: [0x0000700000097000,0x0000700000197000],  sp=0x0000700000196200,  free space=1020k
 Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
-V  [libjvm.dylib+0x52d5c5]
-V  [libjvm.dylib+0x1edad1]
-V  [libjvm.dylib+0x310bfa]
-V  [libjvm.dylib+0x30f83f]
-V  [libjvm.dylib+0x3034d0]
-C  [libAccessMethod.jnilib+0x1f89]  _ZN7JNIEnv_14CallVoidMethodEP8_jobjectP10_jmethodIDz+0x189
-C  [libAccessMethod.jnilib+0x1772]  Java_com_study_jnilearn_AccessMethod_callJavaInstanceMethod+0x272
+V  [libjvm.dylib+0x52d5c5]  VMError::report_and_die()+0x5cd
+V  [libjvm.dylib+0x1edad1]  report_vm_error(char const*, int, char const*, char const*)+0x54
+V  [libjvm.dylib+0x310bfa]  JNI_ArgumentPusherVaArg::iterate(unsigned long long)+0x46
+V  [libjvm.dylib+0x30f83f]  jni_invoke_nonstatic(JNIEnv_*, JavaValue*, _jobject*, JNICallType, _jmethodID*, JNI_ArgumentPusher*, Thread*)+0x29a
+V  [libjvm.dylib+0x3034d0]  jni_CallVoidMethodV+0xae
+C  [libAccessMethod.jnilib+0x1f79]  JNIEnv_::CallVoidMethod(_jobject*, _jmethodID*, ...)+0x189
+C  [libAccessMethod.jnilib+0x1762]  Java_com_study_jnilearn_AccessMethod_callJavaInstanceMethod+0x272
 j  com.study.jnilearn.AccessMethod.callJavaInstanceMethod(Ljava/lang/String;I)V+0
 j  com.study.jnilearn.AccessMethod.main([Ljava/lang/String;)V+3
 v  ~StubRoutines::call_stub
-V  [libjvm.dylib+0x2dbef8]
-V  [libjvm.dylib+0x2dbcc8]
-V  [libjvm.dylib+0x30f55e]
-V  [libjvm.dylib+0x3086f9]
+V  [libjvm.dylib+0x2dbef8]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x22a
+V  [libjvm.dylib+0x2dbcc8]  JavaCalls::call(JavaValue*, methodHandle, JavaCallArguments*, Thread*)+0x28
+V  [libjvm.dylib+0x30f55e]  jni_invoke_static(JNIEnv_*, JavaValue*, _jobject*, JNICallType, _jmethodID*, JNI_ArgumentPusher*, Thread*)+0xe6
+V  [libjvm.dylib+0x3086f9]  jni_CallStaticVoidMethod+0x10b
 C  [java+0x30fe]  JavaMain+0x91d
 C  [libsystem_pthread.dylib+0x3c13]  _pthread_body+0x83
 C  [libsystem_pthread.dylib+0x3b90]  _pthread_body+0x0
@@ -45,17 +45,17 @@ v  ~StubRoutines::call_stub
 ---------------  P R O C E S S  ---------------
 
 Java Threads: ( => current thread )
-  0x00007fd434004800 JavaThread "Service Thread" daemon [_thread_blocked, id=17923, stack(0x0000700000cbe000,0x0000700000dbe000)]
-  0x00007fd433086000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=17411, stack(0x0000700000bbb000,0x0000700000cbb000)]
-  0x00007fd433084800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=16899, stack(0x0000700000ab8000,0x0000700000bb8000)]
-  0x00007fd433081000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12815, stack(0x00007000009b5000,0x0000700000ab5000)]
-  0x00007fd432813800 JavaThread "Finalizer" daemon [_thread_blocked, id=12291, stack(0x000070000082f000,0x000070000092f000)]
-  0x00007fd433809800 JavaThread "Reference Handler" daemon [_thread_blocked, id=11779, stack(0x000070000072c000,0x000070000082c000)]
-=>0x00007fd432806800 JavaThread "main" [_thread_in_vm, id=5891, stack(0x000070000011a000,0x000070000021a000)]
+  0x00007f8b42838000 JavaThread "Service Thread" daemon [_thread_blocked, id=17923, stack(0x0000700000cbe000,0x0000700000dbe000)]
+  0x00007f8b4204c000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=17411, stack(0x0000700000bbb000,0x0000700000cbb000)]
+  0x00007f8b4204a800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=16899, stack(0x0000700000ab8000,0x0000700000bb8000)]
+  0x00007f8b42018800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12815, stack(0x00007000009b5000,0x0000700000ab5000)]
+  0x00007f8b42006800 JavaThread "Finalizer" daemon [_thread_blocked, id=12291, stack(0x000070000082f000,0x000070000092f000)]
+  0x00007f8b41808000 JavaThread "Reference Handler" daemon [_thread_blocked, id=11779, stack(0x000070000072c000,0x000070000082c000)]
+=>0x00007f8b42806800 JavaThread "main" [_thread_in_vm, id=5379, stack(0x0000700000097000,0x0000700000197000)]
 
 Other Threads:
-  0x00007fd433807000 VMThread [stack: 0x0000700000629000,0x0000700000729000] [id=11267]
-  0x00007fd433082000 WatcherThread [stack: 0x0000700000dc1000,0x0000700000ec1000] [id=18435]
+  0x00007f8b42836800 VMThread [stack: 0x0000700000629000,0x0000700000729000] [id=11267]
+  0x00007f8b42839000 WatcherThread [stack: 0x0000700000dc1000,0x0000700000ec1000] [id=18435]
 
 VM state:not at safepoint (normal execution)
 
@@ -71,18 +71,18 @@ Heap
  PSPermGen       total 21504K, used 2627K [0x000000077ae00000, 0x000000077c300000, 0x0000000780000000)
   object space 21504K, 12% used [0x000000077ae00000,0x000000077b090c50,0x000000077c300000)
 
-Card table byte_map: [0x000000010e863000,0x000000010ec8d000] byte_map_base: 0x000000010ac8c000
+Card table byte_map: [0x000000010fac0000,0x000000010feea000] byte_map_base: 0x000000010bee9000
 
-Polling page: 0x000000010a505000
+Polling page: 0x000000010c135000
 
-Code Cache  [0x000000010b863000, 0x000000010bad3000, 0x000000010e863000)
+Code Cache  [0x000000010ca00000, 0x000000010cc70000, 0x000000010fa00000)
  total_blobs=183 nmethods=2 adapters=136 free_code_cache=48768Kb largest_free_block=49923776
 
 Compilation events (4 events):
-Event: 0.068 Thread 0x00007fd433084800    1             java.lang.String::hashCode (55 bytes)
-Event: 0.072 Thread 0x00007fd433086000    2             java.lang.String::indexOf (70 bytes)
-Event: 0.072 Thread 0x00007fd433084800 nmethod 1 0x000000010b8c3550 code [0x000000010b8c36a0, 0x000000010b8c3818]
-Event: 0.074 Thread 0x00007fd433086000 nmethod 2 0x000000010b8c3150 code [0x000000010b8c32a0, 0x000000010b8c3448]
+Event: 0.063 Thread 0x00007f8b4204a800    1             java.lang.String::hashCode (55 bytes)
+Event: 0.068 Thread 0x00007f8b4204c000    2             java.lang.String::indexOf (70 bytes)
+Event: 0.068 Thread 0x00007f8b4204a800 nmethod 1 0x000000010ca60550 code [0x000000010ca606a0, 0x000000010ca60818]
+Event: 0.069 Thread 0x00007f8b4204c000 nmethod 2 0x000000010ca60150 code [0x000000010ca602a0, 0x000000010ca60448]
 
 GC Heap History (0 events):
 No events
@@ -91,28 +91,28 @@ Deoptimization events (0 events):
 No events
 
 Internal exceptions (10 events):
-Event: 0.072 Thread 0x00007fd432806800 Threw 0x00000007d55903b0 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.072 Thread 0x00007fd432806800 Threw 0x00000007d55904d8 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.072 Thread 0x00007fd432806800 Threw 0x00000007d5591178 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jni.cpp:717
-Event: 0.072 Thread 0x00007fd432806800 Threw 0x00000007d5591298 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.072 Thread 0x00007fd432806800 Threw 0x00000007d55913c0 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.074 Thread 0x00007fd432806800 Threw 0x00000007d55a2d08 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jni.cpp:717
-Event: 0.074 Thread 0x00007fd432806800 Threw 0x00000007d55a2e28 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.074 Thread 0x00007fd432806800 Threw 0x00000007d55a2f50 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.074 Thread 0x00007fd432806800 Threw 0x00000007d55a31a0 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
-Event: 0.079 Thread 0x00007fd432806800 Threw 0x00000007d56541e8 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.067 Thread 0x00007f8b42806800 Threw 0x00000007d55903b0 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.067 Thread 0x00007f8b42806800 Threw 0x00000007d55904d8 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.068 Thread 0x00007f8b42806800 Threw 0x00000007d5591178 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 0.068 Thread 0x00007f8b42806800 Threw 0x00000007d5591298 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.068 Thread 0x00007f8b42806800 Threw 0x00000007d55913c0 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.069 Thread 0x00007f8b42806800 Threw 0x00000007d55a2d08 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 0.069 Thread 0x00007f8b42806800 Threw 0x00000007d55a2e28 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.069 Thread 0x00007f8b42806800 Threw 0x00000007d55a2f50 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.069 Thread 0x00007f8b42806800 Threw 0x00000007d55a31a0 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
+Event: 0.073 Thread 0x00007f8b42806800 Threw 0x00000007d56541e8 at /HUDSON/workspace/7u-2-build-macosx-x86_64/jdk7u79/2331/hotspot/src/share/vm/prims/jvm.cpp:1304
 
 Events (10 events):
-Event: 0.076 loading class 0x00007fd43308ac40
-Event: 0.076 loading class 0x00007fd43308ac40 done
-Event: 0.076 loading class 0x000000011366b6f0
-Event: 0.076 loading class 0x000000011366b6f0 done
-Event: 0.077 loading class 0x0000000113653150
-Event: 0.077 loading class 0x0000000113653150 done
-Event: 0.077 loading class 0x0000000113653cc0
-Event: 0.077 loading class 0x0000000113653cc0 done
-Event: 0.079 loading class 0x00007fd43253fb40
-Event: 0.079 loading class 0x00007fd43253fb40 done
+Event: 0.071 loading class 0x00007f8b42848a40
+Event: 0.071 loading class 0x00007f8b42848a40 done
+Event: 0.071 loading class 0x00000001148746f0
+Event: 0.071 loading class 0x00000001148746f0 done
+Event: 0.071 loading class 0x000000011485c150
+Event: 0.071 loading class 0x000000011485c150 done
+Event: 0.072 loading class 0x000000011485ccc0
+Event: 0.072 loading class 0x000000011485ccc0 done
+Event: 0.073 loading class 0x00007f8b41627900
+Event: 0.073 loading class 0x00007f8b41627900 done
 
 
 Dynamic libraries:
@@ -292,24 +292,24 @@ Dynamic libraries:
 0x00000000020af000 	/System/Library/PrivateFrameworks/CoreSymbolication.framework/Versions/A/CoreSymbolication
 0x00000000020af000 	/System/Library/PrivateFrameworks/Symbolication.framework/Versions/A/Symbolication
 0x00000000020af000 	/System/Library/PrivateFrameworks/SpeechRecognitionCore.framework/Versions/A/SpeechRecognitionCore
-0x000000010a480000 	/System/Library/CoreServices/Encodings/libSimplifiedChineseConverter.dylib
-0x000000010ae00000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/server/libjvm.dylib
+0x000000010b64d000 	/System/Library/CoreServices/Encodings/libSimplifiedChineseConverter.dylib
+0x000000010b691000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/server/libjvm.dylib
 0x00000000020af000 	/usr/lib/libstdc++.6.dylib
-0x000000010a4c8000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libverify.dylib
-0x000000010a4d5000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libjava.dylib
-0x000000010a50f000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libzip.dylib
-0x00000001148d7000 	/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/JavaRuntimeSupport
-0x00000001148f2000 	/System/Library/Frameworks/JavaVM.framework/Versions/A/Frameworks/JavaNativeFoundation.framework/Versions/A/JavaNativeFoundation
-0x0000000114907000 	/System/Library/Frameworks/JavaVM.framework/Versions/A/JavaVM
+0x000000010c0f8000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libverify.dylib
+0x000000010c105000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libjava.dylib
+0x000000010c13f000 	/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/libzip.dylib
+0x000000010c1e4000 	/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/JavaRuntimeSupport
+0x0000000115ac0000 	/System/Library/Frameworks/JavaVM.framework/Versions/A/Frameworks/JavaNativeFoundation.framework/Versions/A/JavaNativeFoundation
+0x0000000115ad5000 	/System/Library/Frameworks/JavaVM.framework/Versions/A/JavaVM
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon
-0x0000000114914000 	/System/Library/PrivateFrameworks/JavaLaunching.framework/Versions/A/JavaLaunching
+0x0000000115ae2000 	/System/Library/PrivateFrameworks/JavaLaunching.framework/Versions/A/JavaLaunching
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CommonPanels.framework/Versions/A/CommonPanels
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Help.framework/Versions/A/Help
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/Versions/A/Print
 0x00000000020af000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI
-0x0000000116271000 	/Users/satan_z/work/practice/jniTest/lib/libAccessMethod.jnilib
+0x000000011743e000 	/Users/satan_z/work/practice/jniTest/lib/libAccessMethod.jnilib
 
 VM Arguments:
 jvm_args: -Djava.library.path=/Users/satan_z/work/practice/jniTest/lib 
@@ -340,7 +340,7 @@ SIGQUIT: [libjvm.dylib+0x41d0d1], sa_mask[0]=0xfffefeff, sa_flags=0x00000042
 
 OS:Bsduname:Darwin 15.2.0 Darwin Kernel Version 15.2.0: Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
 rlimit: STACK 8192k, CORE 0k, NPROC 709, NOFILE 10240, AS infinity
-load average:9.16 3.93 2.66
+load average:1.83 1.88 1.84
 
 CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, erms, ht, tsc, tscinvbit
 
@@ -351,6 +351,6 @@ Memory: 4k page, physical 8388608k(2097152k free)
 
 vm_info: Java HotSpot(TM) 64-Bit Server VM (24.79-b02) for bsd-amd64 JRE (1.7.0_79-b15), built on Apr 10 2015 11:35:04 by "java_re" with gcc 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00)
 
-time: Thu Jan 14 18:01:32 2016
+time: Thu Jan 14 18:49:04 2016
 elapsed time: 0 seconds
 
