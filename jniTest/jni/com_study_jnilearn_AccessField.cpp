@@ -9,7 +9,7 @@ using namespace std;
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessField_accessStaticField
-  (JNIEnv * env, jclass jobj)
+  (JNIEnv * env, jclass cls)
 {
 
 	jclass clazz = NULL;
@@ -30,7 +30,44 @@ JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessField_accessStaticField
 
 	cout<<"end C++"<<endl;
 
+
+	//test 
+
+	cout<<"start test"<<endl;
+
+	jobject jobj = NULL;
+
+	jmethodID mid = NULL; 
+	mid = env->GetStaticMethodID(cls , "accessInstanceField" , "(Lcom/study/jnilearn/ClassField;)V");
+
+	if(mid == NULL)
+	{
+		cout<<"mid no found"<<endl;
+		return;
+	}
+
+	jmethodID mid_con = NULL;
+	mid_con = env->GetMethodID(clazz , "<init>" , "(Ljava/lang/String;I)V");
+
+	if (mid_con == NULL)
+	{
+		cout<<"con mid no found !"<<endl;
+		return;
+	}
+
+	jstring j_str = env->NewStringUTF("test");
+
+	jobj = env->NewObject(clazz , mid_con , j_str , 780);
+
+	if (jobj == NULL)
+	{
+		cout<<"obj create fail"<<endl;
+		return;
+	}
+
+	env->CallStaticVoidMethod(clazz , mid , jobj);
 	env->DeleteLocalRef(clazz);
+	env->DeleteLocalRef(jobj);
 
 }
 
@@ -49,9 +86,12 @@ JNIEXPORT void JNICALL Java_com_study_jnilearn_AccessField_accessInstanceField
 	const char * c_str = NULL;
 
 	cout<<"start C++"<<endl;
+	printf("%p\n", env);
+	cout<<jobj<<endl;
+
+
 
 	clazz = env->GetObjectClass(jobj);
-
 	if (clazz == NULL)
 	{
 		cout<<"class was no found"<<endl;

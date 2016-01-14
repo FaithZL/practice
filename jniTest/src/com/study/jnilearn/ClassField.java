@@ -7,6 +7,16 @@ public class ClassField{
 
 	private static int _num;
 
+	public ClassField(){
+		_str = "defaut";
+		_num = 10000;
+	}
+
+	public ClassField(String str , int num){
+		_str = str;
+		_num = num;
+	}
+
 	public int getNum(){
 		return ClassField._num;
 	}
